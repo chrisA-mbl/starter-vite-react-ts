@@ -1,15 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 import counterReducer from '../features/counter/counter-slice';
-import { apiSlice } from '../features/dogs/dogs.api.slice';
+import { dogApiSlice } from '../features/dogs/dogs.api.slice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    [dogApiSlice.reducerPath]: dogApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
+    getDefaultMiddleware().concat(dogApiSlice.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
