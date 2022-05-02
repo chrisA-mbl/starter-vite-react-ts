@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { Button, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
+import Counter from './Couter';
 
 type HelloWorldProps = {
   text: string;
@@ -12,7 +13,7 @@ const style = css`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     color: red;
   }
 
@@ -27,12 +28,9 @@ const style = css`
 `;
 const HelloWorld = ({ text }: HelloWorldProps) => (
   <div css={style}>
-    <h1 className="title">Vite + React + TypeScript + Storybook</h1>
-    <Button variant="contained">Help</Button>
-    <Stack spacing={1}>
-      <div>Help2</div>
-      <div>Help2</div>
-    </Stack>
+    <h1 className="title">Vite + React + TypeScriptk</h1>
+    <Counter />
+    <Stack spacing={1}></Stack>
     <p className="read">hello {text}!!</p>
   </div>
 );
