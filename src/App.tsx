@@ -1,81 +1,65 @@
 import { Global } from '@emotion/react';
-import { FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
-import { useState } from 'react';
-import { useFetchBreedsQuery } from './features/dogs/dogs.api.slice';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Box,
+  Stack,
+} from '@mui/material';
 import HelloWorld from './components/HelloWorld';
-
 import globalStyle from './styles/global';
 import { Routes, Route, Link } from 'react-router-dom';
+import SideNavbar from './components/SideNavbar';
+import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
 
 const App = () => {
-  const [numDogs, setNumDogs] = useState(3);
-  const { data = [], isFetching } = useFetchBreedsQuery(numDogs);
-
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <Global styles={globalStyle} />
-      <Box sx={{ mt: 2 }}>
-        <FormControl sx={{ width: 500 }}>
-          <InputLabel id="demo-simple-select-label">Dogs to Fetch:</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={numDogs}
-            label="Age"
-            onChange={(e) => setNumDogs(Number(e.target.value))}
-          >
-            <MenuItem value={1}>One</MenuItem>
-            <MenuItem value={2}>Two</MenuItem>
-            <MenuItem value={3}>Three</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
 
-      <div>
-        <p>Number of dogs fetched: {data.length}</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Breed</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((breed) => (
-              <tr key={breed.id}>
-                <td>{breed.name}</td>
-                <td>
-                  <img src={breed.image.url} alt={breed.name} height={100} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="App">
-        <h1>Welcome to React Router!</h1>
+      <SideNavbar />
+      <Box
+        component="main"
+        sx={{
+          backgroundColor: 'lightblue',
+          padding: '8px',
+          width: '100%',
+          height: '100vh',
+          margin: '6px 14px',
+        }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="home" element={<HelloWorld text="world" />} />
+          <Route path="signup" element={<SignupPage />} />
         </Routes>
-
-        <HelloWorld text="world" />
-      </div>
+      </Box>
     </Box>
   );
 };
-
 // App.js
 function Home() {
   return (
     <>
       <main>
         <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
+        <iframe
+          src="https://econoc.grafana.net/d-solo/I-tFDpY7k/3-data-explorer?orgId=1&from=1652189972912&to=1652362772912&panelId=2&allow_embedding=true"
+          width="450"
+          height="200"
+        ></iframe>
       </main>
       <nav>
-        <Link to="/about">About</Link>
+        <Stack direction="row" spacing={1}>
+          <Link to="/about">About</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/home">Home</Link>
+          <Link to="/signup">signup</Link>
+        </Stack>
       </nav>
     </>
   );

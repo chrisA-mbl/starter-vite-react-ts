@@ -7,11 +7,9 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
-import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
@@ -21,9 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import Logo from './Logo.js';
-import navbarList from '../util/RouteConstants';
+import navbarList from '../navigation/RouteConstants';
 import StyledAvatar from './StyledAvatar';
-import App from '../App.js';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidthOpen = 240;
@@ -128,6 +125,7 @@ export default function SideNavbar() {
             }}
           >
             <ListItemButton
+              onClick={() => navigate(key.routeNames)}
               sx={{
                 margin: '6px 14px',
                 padding: '10px',
@@ -235,57 +233,39 @@ export default function SideNavbar() {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Drawer
-        variant="permanent"
-        open={open}
-        sx={{
+    <Drawer
+      variant="permanent"
+      open={open}
+      sx={{
+        width: open
+          ? { xs: '0px', sm: drawerWidthClose }
+          : { xs: drawerWidthClose, sm: drawerWidthOpen },
+        transition: theme.transitions.create('width', {
+          easing: theme.transitions.easing.sharp,
+          duration: open
+            ? theme.transitions.duration.leavingScreen
+            : theme.transitions.duration.enteringScreen,
+        }),
+        '& .MuiDrawer-paper': {
+          justifyContent: 'space-between',
+          overflowX: 'hidden',
           width: open
             ? { xs: '0px', sm: drawerWidthClose }
             : { xs: drawerWidthClose, sm: drawerWidthOpen },
+          borderRight: '0px',
+          borderRadius: '0px 16px 16px 0px',
+          boxShadow: theme.shadows[8],
+          backgroundColor: open ? 'green' : 'black',
           transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: open
               ? theme.transitions.duration.leavingScreen
               : theme.transitions.duration.enteringScreen,
           }),
-          '& .MuiDrawer-paper': {
-            justifyContent: 'space-between',
-            overflowX: 'hidden',
-            width: open
-              ? { xs: '0px', sm: drawerWidthClose }
-              : { xs: drawerWidthClose, sm: drawerWidthOpen },
-            borderRight: '0px',
-            borderRadius: '0px 16px 16px 0px',
-            boxShadow: theme.shadows[8],
-            backgroundColor: open ? 'green' : 'grey',
-            transition: theme.transitions.create('width', {
-              easing: theme.transitions.easing.sharp,
-              duration: open
-                ? theme.transitions.duration.leavingScreen
-                : theme.transitions.duration.enteringScreen,
-            }),
-          },
-        }}
-      >
-        {drawerContent}
-      </Drawer>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: 'lightblue',
-          padding: '8px',
-          margin: '6px 14px',
-        }}
-      >
-        <App />
-        <Switch
-          checked={open}
-          onChange={() => setOpen((prevOpen) => !prevOpen)}
-        >
-          switch
-        </Switch>
-      </Box>
-    </Box>
+        },
+      }}
+    >
+      {drawerContent}
+    </Drawer>
   );
 }

@@ -11,9 +11,13 @@ const Counter = () => {
   const handleClick = () => {
     dispatch(amountAdded(3));
   };
+  const handleRemove = () => {};
   return (
     <Box>
       <Button onClick={handleClick} variant="contained">
+        count is: {count}
+      </Button>
+      <Button onClick={handleRemove} variant="contained">
         count is: {count}
       </Button>
     </Box>

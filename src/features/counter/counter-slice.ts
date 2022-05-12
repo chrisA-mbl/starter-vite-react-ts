@@ -15,9 +15,11 @@ const counterSlice = createSlice({
   reducers: {
     // This works since immer maes it immutable under the hood.
     incremented(state) {
-      state.value++;
+      state.value += 1;
     },
-
+    decrement(state) {
+      state.value -= 1;
+    },
     amountAdded(state, action: PayloadAction<number>) {
       state.value += action.payload;
     },
@@ -27,5 +29,5 @@ const counterSlice = createSlice({
   },
 });
 
-export const { incremented, amountAdded } = counterSlice.actions;
+export const { incremented, amountAdded, decrement } = counterSlice.actions;
 export default counterSlice.reducer;
