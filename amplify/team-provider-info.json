@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-datakwipreactapp-dev-140733-authRole",
+      "UnauthRoleArn": "arn:aws:iam::032363835097:role/amplify-datakwipreactapp-dev-140733-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::032363835097:role/amplify-datakwipreactapp-dev-140733-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-datakwipreactapp-dev-140733-deployment",
+      "UnauthRoleName": "amplify-datakwipreactapp-dev-140733-unauthRole",
+      "StackName": "amplify-datakwipreactapp-dev-140733",
+      "StackId": "arn:aws:cloudformation:us-east-2:032363835097:stack/amplify-datakwipreactapp-dev-140733/27ec77b0-d519-11ec-a074-0a8bea45ae2e",
+      "AmplifyAppId": "d3h1pf46kq1944"
+    },
+    "categories": {
+      "auth": {
+        "datakwipreactapp9edabe95": {}
+      }
+    }
+  }
+}
