@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "datakwipreactapp9edabe95_identitypool_9edabe95",
+    "identityPoolName": "startervitereactts2272ca07_identitypool_2272ca07",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "datakw9edabe95",
-    "userPoolName": "datakwipreactapp9edabe95_userpool_9edabe95",
+    "resourceNameTruncated": "starte2272ca07",
+    "userPoolName": "startervitereactts2272ca07_userpool_2272ca07",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,15 +31,22 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "datakw9edabe95_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "starte2272ca07_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "9edabe95",
-    "resourceName": "datakwipreactapp9edabe95",
+    "sharedId": "2272ca07",
+    "resourceName": "startervitereactts2272ca07",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
     "usernameAttributes": [
       "email"
     ],
+    "hostedUIDomainName": "startervitereactts2272ca07-2272ca07",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
