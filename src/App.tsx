@@ -16,7 +16,7 @@ const Home = () => (
     <Box sx={{ height: '100vh', width: '80vw', marginTop: 2 }}>
       <iframe
         title="FirstFrame"
-        src="https://econoc.grafana.net/d-solo/I-tFDpY7k/3-data-explorer?orgId=1&from=1652189972912&to=1652362772912&panelId=2&allow_embedding=true"
+        src="https://econoc.grafana.net/d/eswRhGB7z/1-device-health-dashboard?orgId=1&allow_embedding=true&kiosk=tv"
         height="90%"
         width="100%"
         style={{ borderRadius: 24 }}

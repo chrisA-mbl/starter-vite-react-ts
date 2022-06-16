@@ -33,6 +33,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@types/babel__core": "^7.1.19",
     "@types/react": "^18.0.7",
