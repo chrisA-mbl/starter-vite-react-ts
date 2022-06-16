@@ -17,6 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line import/no-unresolved
 import LogoSvg from '../util/images/datakwip_logo_v2.svg?component';
 import navbarList from '../navigation/RouteConstants';
 
@@ -169,7 +170,13 @@ const SideNavbar = ({ signOut }) => {
             alignContent: 'center',
           }}
         />
-        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <Box
+          sx={{
+            display: open ? 'none' : { xs: 'block', sm: 'initial' },
+            flexDirection: 'column',
+            flexGrow: 1,
+          }}
+        >
           <Typography
             component="span"
             variant="body2"
@@ -197,12 +204,8 @@ const SideNavbar = ({ signOut }) => {
             All Rights Reserved
           </Typography>
         </Box>
-        <IconButton
-          variant="contained"
-          onClick={signOut}
-          sx={{ color: 'lightGray' }}
-        >
-          <ExitToAppIcon />
+        <IconButton onClick={signOut}>
+          <ExitToAppIcon sx={{ color: 'lightGray' }} />
         </IconButton>
       </Box>
     </>

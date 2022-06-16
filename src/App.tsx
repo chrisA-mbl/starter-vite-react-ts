@@ -1,11 +1,13 @@
-import { Global } from '@emotion/react';
+import { Global, useTheme } from '@emotion/react';
 import { Box, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import SideNavbar from './components/SideNavbar';
+import Navbar from './components/SideNavbar';
 import globalStyle from './styles/global';
+import TopNavbar from './components/TopNav';
 
+// eslint-disable-next-line import/no-unresolved
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 
@@ -34,14 +36,25 @@ const Home = () => (
   </main>
 );
 
-const App = ({ signOut, user }) => (
-  <Box sx={{ display: 'flex' }}>
-    <Global styles={globalStyle} />
+const App = ({ signOut, user }) => {
+  const theme = useTheme();
 
-    <SideNavbar signOut={signOut} />
-    <Box sx={{ display: 'flex', marginLeft: 4, pt: 4 }} />
-    <Home />
-  </Box>
-);
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <Global styles={globalStyle} />
 
+      <Navbar signOut={signOut} />
+
+      <Box
+        sx={{
+          marginTop: 9,
+          px: 4,
+        }}
+      >
+        <TopNavbar />
+        <Home />
+      </Box>
+    </Box>
+  );
+};
 export default withAuthenticator(App);
