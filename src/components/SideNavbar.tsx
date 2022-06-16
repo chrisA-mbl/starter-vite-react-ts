@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
-import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
@@ -48,7 +47,7 @@ const SideNavbar = ({ signOut }) => {
           backgroundColor: 'transparent',
           margin: '14px 14px',
           padding: '12px 0px',
-          borderBottom: '1px solid black',
+          borderBottom: '1px solid lightGrey',
           alignItems: 'flex-end',
         }}
       >
@@ -144,7 +143,6 @@ const SideNavbar = ({ signOut }) => {
             </ListItemButton>
           </Tooltip>
         ))}
-        <Divider variant="middle" light />
       </List>
       <Box
         sx={{
@@ -159,7 +157,7 @@ const SideNavbar = ({ signOut }) => {
           alignContents: 'center',
           margin: '14px 14px',
           padding: '12px 4px',
-          borderTop: '1px solid black',
+          borderTop: '1px solid lightgray',
         }}
       >
         <Box
@@ -202,7 +200,7 @@ const SideNavbar = ({ signOut }) => {
         <IconButton
           variant="contained"
           onClick={signOut}
-          sx={{ color: 'black' }}
+          sx={{ color: 'lightGray' }}
         >
           <ExitToAppIcon />
         </IconButton>

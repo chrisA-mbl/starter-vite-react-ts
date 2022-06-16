@@ -1,6 +1,5 @@
 import {
   Person,
-  Search,
   Aod,
   ApiRounded,
   DashboardOutlined,
@@ -109,10 +108,10 @@ export const routes = [
 
 export const navbarList = [
   {
-    icon: Search,
+    icon: ApiRounded,
     desc: routeTitle.Dogs,
     secondDesc: '',
-    routeNames: routeNames.Search,
+    routeNames: routeNames.Dogs,
     badge: 0,
     subList: [],
   },
