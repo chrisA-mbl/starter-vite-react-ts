@@ -1,11 +1,7 @@
-import DashboardOutlined from '@mui/icons-material/DashboardOutlined';
 import Person from '@mui/icons-material/Person';
-import Forum from '@mui/icons-material/Forum';
-import Analytics from '@mui/icons-material/Analytics';
-import FolderOpen from '@mui/icons-material/FolderOpen';
-import BorderColor from '@mui/icons-material/BorderColor';
 import Search from '@mui/icons-material/Search';
 import DogsSelector from '../components/Dogs';
+
 export const routTitle = {
   Dogs: 'Dogs',
   // Dashboard: 'Dashboard',

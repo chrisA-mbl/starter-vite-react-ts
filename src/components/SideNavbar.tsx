@@ -18,10 +18,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
+import { useNavigate } from 'react-router-dom';
 import Logo from './Logo.js';
 import navbarList from '../navigation/RouteConstants';
 import StyledAvatar from './StyledAvatar';
-import { useNavigate } from 'react-router-dom';
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -30,9 +30,9 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-export default function SideNavbar() {
+export default function SideNavbar({ signOut }) {
   const theme = useTheme();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const refFocus = useRef();
 
@@ -73,7 +73,7 @@ export default function SideNavbar() {
         </Box>
         <Typography
           variant="h1"
-          noWrap={true}
+          noWrap
           gutterBottom
           sx={{
             display: { xs: 'none', sm: 'initial' },
@@ -103,16 +103,16 @@ export default function SideNavbar() {
         >
           <MenuIcon
             sx={{ fontSize: '20px', color: open ? 'lightgray' : 'lightGray' }}
-          ></MenuIcon>
+          />
         </Button>
       </Box>
 
-      <List dense={true}>
+      <List dense>
         {navbarList.map((key, index) => (
           <Tooltip
             key={index}
             title={open ? key.desc : ''}
-            placement={'right'}
+            placement="right"
             componentsProps={{
               tooltip: {
                 sx: {
@@ -162,7 +162,7 @@ export default function SideNavbar() {
               {key.badge !== 0 ? (
                 <Chip
                   label={key.badge}
-                  color={'secondary'}
+                  color="secondary"
                   size="small"
                   sx={{ height: 'auto' }}
                 />
@@ -172,7 +172,7 @@ export default function SideNavbar() {
             </ListItemButton>
           </Tooltip>
         ))}
-        <Divider variant="middle" light={true} />
+        <Divider variant="middle" light />
       </List>
 
       <Box
@@ -225,7 +225,11 @@ export default function SideNavbar() {
             Web Designer
           </Typography>
         </Box>
-        <IconButton variant="contained" sx={{ color: 'lightGray' }}>
+        <IconButton
+          variant="contained"
+          onClick={signOut}
+          sx={{ color: 'lightGray' }}
+        >
           <ExitToAppIcon />
         </IconButton>
       </Box>
