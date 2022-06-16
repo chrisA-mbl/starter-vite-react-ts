@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -17,11 +17,9 @@ import IconButton from '@mui/material/IconButton';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
 import { useNavigate } from 'react-router-dom';
-import Logo from './Logo.js';
+import LogoSvg from '../util/images/datakwip_logo_v2.svg?component';
 import navbarList from '../navigation/RouteConstants';
-import StyledAvatar from './StyledAvatar';
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -30,21 +28,13 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-export default function SideNavbar({ signOut }) {
+const SideNavbar = ({ signOut }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const refFocus = useRef();
 
   function toogleOpen() {
     setOpen(!open);
-  }
-
-  function toogleOpenSearch() {
-    setOpen(false);
-    setTimeout(() => {
-      refFocus.current.focus();
-    }, 500);
   }
 
   const drawerContent = (
@@ -58,7 +48,7 @@ export default function SideNavbar({ signOut }) {
           backgroundColor: 'transparent',
           margin: '14px 14px',
           padding: '12px 0px',
-          borderBottom: '1px solid lightgray',
+          borderBottom: '1px solid black',
           alignItems: 'flex-end',
         }}
       >
@@ -69,24 +59,8 @@ export default function SideNavbar({ signOut }) {
             marginBottom: '9px',
           }}
         >
-          <Logo />
+          <LogoSvg style={{ width: 160 }} />
         </Box>
-        <Typography
-          variant="h1"
-          noWrap
-          gutterBottom
-          sx={{
-            display: { xs: 'none', sm: 'initial' },
-            fontSize: '18px',
-            fontWeight: 600,
-            color: 'lightgray',
-            width: '154px',
-            marginLeft: open ? '0px' : '8px',
-            paddingBottom: '3px',
-          }}
-        >
-          MuiMakeStyles
-        </Typography>
 
         <Button
           onClick={toogleOpen}
@@ -102,7 +76,7 @@ export default function SideNavbar({ signOut }) {
           }}
         >
           <MenuIcon
-            sx={{ fontSize: '20px', color: open ? 'lightgray' : 'lightGray' }}
+            sx={{ fontSize: '20px', color: open ? 'black' : 'black' }}
           />
         </Button>
       </Box>
@@ -137,7 +111,7 @@ export default function SideNavbar({ signOut }) {
             >
               <ListItemIcon sx={{ minWidth: '46px' }}>
                 <Badge badgeContent={key.badge} color="secondary" variant="dot">
-                  <key.icon sx={{ fontSize: '20px', color: 'lightgray' }} />
+                  <key.icon sx={{ fontSize: '20px', color: 'black' }} />
                 </Badge>
               </ListItemIcon>
 
@@ -154,27 +128,29 @@ export default function SideNavbar({ signOut }) {
                   display: 'inline',
                   margin: '0px',
                   overflowX: 'hidden',
-                  color: 'lightgray',
+                  color: 'black',
                   whiteSpace: 'nowrap',
                   minWidth: '126px',
                 }}
               />
-              {key.badge !== 0 ? (
+              {key.badge > 0 && (
                 <Chip
                   label={key.badge}
                   color="secondary"
                   size="small"
                   sx={{ height: 'auto' }}
                 />
-              ) : (
-                <></>
               )}
             </ListItemButton>
           </Tooltip>
         ))}
         <Divider variant="middle" light />
       </List>
-
+      <Box
+        sx={{
+          flexGrow: 1,
+        }}
+      />
       <Box
         sx={{
           display: 'flex',
@@ -183,7 +159,7 @@ export default function SideNavbar({ signOut }) {
           alignContents: 'center',
           margin: '14px 14px',
           padding: '12px 4px',
-          borderTop: '1px solid lightgray',
+          borderTop: '1px solid black',
         }}
       >
         <Box
@@ -194,9 +170,7 @@ export default function SideNavbar({ signOut }) {
             alignItems: 'center',
             alignContent: 'center',
           }}
-        >
-          <StyledAvatar />
-        </Box>
+        />
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <Typography
             component="span"
@@ -207,10 +181,10 @@ export default function SideNavbar({ signOut }) {
               whiteSpace: 'nowrap',
               lineHeight: 'inherit',
               fontWeight: 500,
-              color: 'lightgray',
+              color: 'lightGrey',
             }}
           >
-            Arrofi Reza S.
+            © 2022 Datakwip
           </Typography>
           <Typography
             component="span"
@@ -219,16 +193,16 @@ export default function SideNavbar({ signOut }) {
               display: 'block',
               whiteSpace: 'nowrap',
               lineHeight: 'inherit',
-              color: 'lightgray',
+              color: 'lightGrey',
             }}
           >
-            Web Designer
+            All Rights Reserved
           </Typography>
         </Box>
         <IconButton
           variant="contained"
           onClick={signOut}
-          sx={{ color: 'lightGray' }}
+          sx={{ color: 'black' }}
         >
           <ExitToAppIcon />
         </IconButton>
@@ -251,15 +225,16 @@ export default function SideNavbar({ signOut }) {
             : theme.transitions.duration.enteringScreen,
         }),
         '& .MuiDrawer-paper': {
-          justifyContent: 'space-between',
           overflowX: 'hidden',
+          margin: 2,
+
           width: open
             ? { xs: '0px', sm: drawerWidthClose }
             : { xs: drawerWidthClose, sm: drawerWidthOpen },
           borderRight: '0px',
-          borderRadius: '0px 16px 16px 0px',
+          borderRadius: '16px',
           boxShadow: theme.shadows[8],
-          backgroundColor: open ? 'green' : 'black',
+          backgroundColor: open ? 'white' : 'white',
           transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: open
@@ -272,4 +247,6 @@ export default function SideNavbar({ signOut }) {
       {drawerContent}
     </Drawer>
   );
-}
+};
+
+export default SideNavbar;

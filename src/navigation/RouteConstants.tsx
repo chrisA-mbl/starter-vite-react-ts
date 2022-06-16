@@ -1,11 +1,18 @@
-import Person from '@mui/icons-material/Person';
-import Search from '@mui/icons-material/Search';
+import {
+  Person,
+  Search,
+  Aod,
+  ApiRounded,
+  DashboardOutlined,
+} from '@mui/icons-material';
 import DogsSelector from '../components/Dogs';
+import HelloWorld from '../components/HelloWorld';
+import LoginPage from '../components/LoginPage';
 
-export const routTitle = {
+export const routeTitle = {
   Dogs: 'Dogs',
-  // Dashboard: 'Dashboard',
-  // home: '',
+  Dashboard: 'Dashboard',
+  home: 'home',
   // Users: 'Users',
   // Forum: 'Forum',
   // Analytics: 'Analytics',
@@ -15,8 +22,8 @@ export const routTitle = {
 };
 export const routeNames = {
   Dogs: 'Dogs',
-  // Dashboard: 'Dashboard',
-  // home: '',
+  Dashboard: 'Dashboard',
+  home: '',
   // Users: 'Users',
   // Forum: 'Forum',
   // Analytics: 'Analytics',
@@ -32,21 +39,20 @@ export const LinkRoutes = [
     title: 'Dogs',
     icon: Person,
   },
-  // {
-  //   order: 2,
-  //   path: routeNames.restaurants,
-  //   component: Restaurants,
-  //   title: 'Restaurants',
-  //   icon: faUtensils,
-  // },
-  // {
-  //   order: 3,
-  //   path: routeNames.profile,
-  //   component: Profile,
-  //   role: 'any',
-  //   title: 'Profile',
-  //   icon: faUser,
-  // },
+  {
+    path: routeNames.Dashboard,
+    component: HelloWorld,
+    title: 'Dashboard',
+    icon: Aod,
+  },
+  {
+    order: 3,
+    path: routeNames.home,
+    component: LoginPage,
+    role: 'any',
+    title: 'Profile',
+    icon: ApiRounded,
+  },
   // {
   //   order: 5,
   //   path: routeNames.trackOrders,
@@ -104,28 +110,28 @@ export const routes = [
 export const navbarList = [
   {
     icon: Search,
-    desc: routTitle.Dogs,
+    desc: routeTitle.Dogs,
     secondDesc: '',
     routeNames: routeNames.Search,
     badge: 0,
     subList: [],
   },
-  // {
-  //   icon: DashboardOutlined,
-  //   desc: 'Dashboard',
-  //   secondDesc: 'Help me',
-  //   routeNames: routeNames.Dashboard,
+  {
+    icon: DashboardOutlined,
+    desc: 'Dashboard',
+    secondDesc: 'New User',
+    routeNames: routeNames.Dashboard,
 
-  //   badge: 2,
-  //   subList: [],
-  // },
-  // {
-  //   icon: Person,
-  //   desc: 'Users',
-  //   secondDesc: '',
-  //   badge: 0,
-  //   subList: [],
-  // },
+    badge: 2,
+    subList: [],
+  },
+  {
+    icon: Person,
+    desc: 'Users',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
   // {
   //   icon: Forum,
   //   desc: 'Forum',
@@ -173,6 +179,7 @@ export const navbarList = [
 ];
 
 export default navbarList;
+
 function OverridableComponent<T>() {
   throw new Error('Function not implemented.');
 }
