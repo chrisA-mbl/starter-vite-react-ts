@@ -1,8 +1,6 @@
 import { Box, Button } from '@mui/material';
-import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { amountAdded } from '../features/counter/counter-slice';
-import { useFetchBreedsQuery } from '../features/dogs/dogs.api.slice';
 
 const Counter = () => {
   const count = useAppSelector((state) => state.counter.value);

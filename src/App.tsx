@@ -1,4 +1,4 @@
-import { Global, useTheme } from '@emotion/react';
+import { Global } from '@emotion/react';
 import { Box, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
@@ -36,25 +36,20 @@ const Home = () => (
   </main>
 );
 
-const App = ({ signOut, user }) => {
-  const theme = useTheme();
+const App = ({ signOut, user }) => (
+  <Box sx={{ display: 'flex' }}>
+    <Global styles={globalStyle} />
+    <Navbar signOut={signOut} />
 
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <Global styles={globalStyle} />
-
-      <Navbar signOut={signOut} />
-
-      <Box
-        sx={{
-          marginTop: 9,
-          px: 4,
-        }}
-      >
-        <TopNavbar />
-        <Home />
-      </Box>
+    <Box
+      sx={{
+        marginTop: 9,
+        px: 4,
+      }}
+    >
+      <TopNavbar />
+      <Home />
     </Box>
-  );
-};
+  </Box>
+);
 export default withAuthenticator(App);
